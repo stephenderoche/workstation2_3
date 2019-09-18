@@ -16,6 +16,8 @@ using BlotterView.Client.ViewModel;
 using BlotterView.Client.View;
 
 using BlotterView.Client;
+using DevExpress.Xpf.Core;
+using DevExpress.Xpf.Editors;
 using BlotterView.Client.Model;
 
 namespace BlotterView.Client.View
@@ -39,6 +41,26 @@ namespace BlotterView.Client.View
           
         }
 
-       
+        private void cbTheme_EditValueChanged(object send, EditValueChangedEventArgs e)
+        {
+
+            if (this.cbTheme.SelectedItem != null)
+            {
+                ApplicationThemeHelper.ApplicationThemeName = (this.cbTheme.SelectedItem as Theme).Name;
+                _view._vm.Parameters.DefaultTheme = cbTheme.Text;
+            }
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cbTheme.Text = _view._vm.Parameters.DefaultTheme;
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            _view._vm.Parameters.DefaultTheme = cbTheme.Text;
+        }
+
     }
 }

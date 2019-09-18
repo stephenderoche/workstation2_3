@@ -12,9 +12,9 @@ namespace BlotterView.Client.Plugin
 {
     public class BlotterViewParams : ObservableObject, IWidgetParameters
     {
-        
-     
-       
+
+
+        private string _defaultTheme;
         private string _securityName;
         private string _deskName;
         private bool _1d;
@@ -35,6 +35,7 @@ namespace BlotterView.Client.Plugin
         {
            
             this._securityName = string.Empty;
+            this._defaultTheme = "LightGray";
             this._deskName = string.Empty;
             this._1d = false;
             this._5d = false;
@@ -49,10 +50,23 @@ namespace BlotterView.Client.Plugin
 
         }
 
-      
+
+        public string DefaultTheme
+        {
+            get
+            {
+                return this._defaultTheme;
+            }
+
+            set
+            {
+                this._defaultTheme = value;
+                this.RaisePropertyChanged("DefaultTheme");
+
+            }
+        }
 
 
-       
 
         public string SecurityName
         {
@@ -215,7 +229,7 @@ namespace BlotterView.Client.Plugin
         public XElement GetParams()
         {
            XElement parameters = new XElement(
-                                   "SecurityPriceParameters",
+                                   "BlotterViewParameters",
                                    new XAttribute("securityName", this._securityName),
                                    new XAttribute("deskName", this._deskName),
                                    new XAttribute("oned", this._1d),
@@ -226,7 +240,8 @@ namespace BlotterView.Client.Plugin
                                    new XAttribute("YTD", this._YTD),
                                    new XAttribute("oney", this._1y),
                                    new XAttribute("twoy", this._2y),
-                                    new XAttribute("fivey", this._5y)
+                                    new XAttribute("fivey", this._5y),
+                                    new XAttribute("defualtTheme", this._defaultTheme)
                                     );
 
             return parameters;
@@ -236,7 +251,7 @@ namespace BlotterView.Client.Plugin
         {
             if (null != param)
             {
-
+                XAttribute DefualtThemeAttribute = param.Attribute("defualtTheme");
                 XAttribute SecurityNameAttribute = param.Attribute("securityName");
                 XAttribute DeskNameAttribute = param.Attribute("deskName");
                 XAttribute onedAttribute = param.Attribute("oned");
@@ -253,10 +268,14 @@ namespace BlotterView.Client.Plugin
                 try
                 {
 
+                    if (DefualtThemeAttribute != null)
+                    {
+                        this._defaultTheme = (string)DefualtThemeAttribute;
 
-                   
+                    }
 
-                  
+
+
                     if (SecurityName != null)
                     {
                         this._securityName = (string)SecurityNameAttribute;

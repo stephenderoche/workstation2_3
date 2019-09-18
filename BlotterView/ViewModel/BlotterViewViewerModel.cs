@@ -794,13 +794,13 @@ namespace BlotterView.Client.ViewModel
 
             get
             {
-                return string.Format("Symbol: {0}  Price: {1}  High: {2}  Low: {3}", Parameters.SecurityName, DataDelayedQuotes.delayedPrice, DataDelayedQuotes.high, DataDelayedQuotes.low);
+                return string.Format("Symbol: {0}  Price: {1}  Bid: {2}  Ask: {3}", Parameters.SecurityName, DataDelayedQuotes.latestPrice, DataDelayedQuotes.iexBidPrice, DataDelayedQuotes.iexAskPrice);
                 // return string.Format("You are <span style='color:red'>{0}</span> km. in city <span style='color:red'>{1}</span> km.", Symbol, DataDelayedQuotes.delayedPrice);
             }
             set
             {
                 // _symbol = string.Format("{0} Last Price:{1}",value, DataDelayedQuotes.delayedPrice);
-                _newProperty = string.Format("Sybmol:{0} Price:{1} High:{2} Low: {3}", Parameters.SecurityName, DataDelayedQuotes.delayedPrice, DataDelayedQuotes.high, DataDelayedQuotes.low);
+                _newProperty = string.Format("Sybmol:{0} Price:{1} Bid:{2} Ask: {3}", Parameters.SecurityName, DataDelayedQuotes.latestPrice, DataDelayedQuotes.iexBidPrice, DataDelayedQuotes.iexAskPrice);
                 _newProperty = value;
                 this.RaisePropertyChanged("NewProperty");
             }
@@ -932,7 +932,7 @@ namespace BlotterView.Client.ViewModel
 
             if (RunAmount == null)
             
-                RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/5y", "STT");
+                RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/5y?token=pk_27cc9154604842ed9e604f1ef7f492b5", "STT");
            
 
             //RunAmount = string.Format(RunAmount, symbol);
@@ -960,7 +960,7 @@ namespace BlotterView.Client.ViewModel
 
         public void GetDelayedQuote()
         {
-            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/delayed-quote", Parameters.SecurityName);
+            RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/quote?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
             using (HttpClient client = new HttpClient())
             {
@@ -1013,79 +1013,79 @@ namespace BlotterView.Client.ViewModel
         public void GetChecks()
         {
 
-            ThreadPool.QueueUserWorkItem(
-                delegate(object eventArg)
+            //ThreadPool.QueueUserWorkItem(
+            //    delegate(object eventArg)
+            //    {
+            if (Parameters != null && Parameters.SecurityName != null)
+            {
+                if (Parameters.OneDay == true)
                 {
-                    if (Parameters != null && Parameters.SecurityName != null)
-                    {
-                        if (Parameters.OneDay == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/1d", Parameters.SecurityName);
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/1d?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
 
 
-                        }
-                        else if (Parameters.FiveDay == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/5d", Parameters.SecurityName);
-                            //_vm.DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/1m", _vm.Symbol);
+                }
+                else if (Parameters.FiveDay == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/5d?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    //_vm.DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/1m?token=pk_27cc9154604842ed9e604f1ef7f492b5", _vm.Symbol);
 
-                        }
-                        else if (Parameters.OneMonth == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/1m", Parameters.SecurityName);
-                            //_vm.DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/1m", _vm.Symbol);
+                }
+                else if (Parameters.OneMonth == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/1m?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    //_vm.DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/1m?token=pk_27cc9154604842ed9e604f1ef7f492b5", _vm.Symbol);
 
-                        }
-                        else if (Parameters.ThreeMonth == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/3m", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/3m", Parameters.SecurityName);
+                }
+                else if (Parameters.ThreeMonth == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/3m?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/3m?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
-                        else if (Parameters.SixMonth == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/6m", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/6m", Parameters.SecurityName);
+                }
+                else if (Parameters.SixMonth == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/6m?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/6m?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
-                        else if (Parameters.YTD == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/ytd", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/ytd", Parameters.SecurityName);
+                }
+                else if (Parameters.YTD == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/ytd?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/ytd?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
-                        else if (Parameters.OneYear == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/1y", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/1y", Parameters.SecurityName);
+                }
+                else if (Parameters.OneYear == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/1y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/1y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
-                        else if (Parameters.TwoYear == true)
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/2y", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/2y", Parameters.SecurityName);
+                }
+                else if (Parameters.TwoYear == true)
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/2y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/2y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
-                        else
-                        {
-                            RunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/chart/5y", Parameters.SecurityName);
-                            DividendRunAmount = string.Format("https://api.iextrading.com/1.0/stock/{0}/dividends/5y", Parameters.SecurityName);
+                }
+                else
+                {
+                    RunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/chart/5y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
+                    DividendRunAmount = string.Format("https://cloud.iexapis.com/stable/stock/{0}/dividends/5y?token=pk_27cc9154604842ed9e604f1ef7f492b5", Parameters.SecurityName);
 
-                        }
+                }
 
 
 
 
 
-                        GetData();
-                        GetDelayedQuote();
-                        GetDividend();
+                GetData();
+                GetDelayedQuote();
+                GetDividend();
 
-                    }
+            }
 
 
-                });//end thread
+            // });//end thread
 
 
 
@@ -1144,14 +1144,58 @@ public class Dividend
 }
 public class PriceDataResponse
 {
-    public string symbol { get; set; }
+    //public string symbol { get; set; }
 
-    public decimal? delayedPrice { get; set; }
+    //public decimal? delayedPrice { get; set; }
+    //public decimal? high { get; set; }
+    //public decimal? low { get; set; }
+    //public decimal? delayedSize { get; set; }
+    //public string delayedPriceTime { get; set; }
+    //public string processedTime { get; set; }
+
+    public string symbol { get; set; }
+    public string companyName { get; set; }
+    public string primaryExchange { get; set; }
+    public string calculationPrice { get; set; }
+    public decimal? open { get; set; }
+    public string openTime { get; set; }
+    public decimal? close { get; set; }
+    public string closeTime { get; set; }
     public decimal? high { get; set; }
     public decimal? low { get; set; }
-    public decimal? delayedSize { get; set; }
-    public string delayedPriceTime { get; set; }
-    public string processedTime { get; set; }
+    public double? latestPrice { get; set; }
+    public string latestSource { get; set; }
+    public string latestTime { get; set; }
+    public long? latestUpdate { get; set; }
+    public int? latestVolume { get; set; }
+    public double? iexRealtimePrice { get; set; }
+    public int? iexRealtimeSize { get; set; }
+    public long? iexLastUpdated { get; set; }
+    public object delayedPrice { get; set; }
+    public object delayedPriceTime { get; set; }
+    public double? extendedPrice { get; set; }
+    public double? extendedChange { get; set; }
+    public double? extendedChangePercent { get; set; }
+    public long? extendedPriceTime { get; set; }
+    public double? previousClose { get; set; }
+    public object previousVolume { get; set; }
+    public double? change { get; set; }
+    public double? changePercent { get; set; }
+    public int? volume { get; set; }
+    public double? iexMarketPercent { get; set; }
+    public int? iexVolume { get; set; }
+    public int? avgTotalVolume { get; set; }
+    public double? iexBidPrice { get; set; }
+    public int? iexBidSize { get; set; }
+    public double? iexAskPrice { get; set; }
+    public int? iexAskSize { get; set; }
+    public long? marketCap { get; set; }
+    public double? peRatio { get; set; }
+    public double? week52High { get; set; }
+    public double? week52Low { get; set; }
+    public double? ytdChange { get; set; }
+    public long? lastTradeTime { get; set; }
+    public bool? isUSMarketOpen { get; set; }
 
 
 
@@ -1159,156 +1203,174 @@ public class PriceDataResponse
 public class HistoricalDataResponse
 {
 
-    public HistoricalDataResponse(string _date,
-      double? _high,
-     double? _open,
-     double? _low,
-      double? _close,
-     int? _volume,
-      int? _unadjustedVolume,
-      double? _change,
-      double? _changePercent,
-      double? _vwap,
-      string _label,
-      double? _changeOverTime)
-    {
-        this.Date = _date;
-        this.High = _high;
-        this.Open = _open;
-        this.Low = _low;
-        this.Close = _close;
-        this.UnadjustedVolume = _unadjustedVolume;
-        this.Change = _change;
-        this.ChangePercent = _changePercent;
-        this.Vwap = _vwap;
-        this.Label = _label;
-        this.ChangeOverTime = _changeOverTime;
+    //public HistoricalDataResponse(string _date,
+    //  double? _high,
+    // double? _open,
+    // double? _low,
+    //  double? _close,
+    // int? _volume,
+    //  int? _unadjustedVolume,
+    //  double? _change,
+    //  double? _changePercent,
+    //  double? _vwap,
+    //  string _label,
+    //  double? _changeOverTime)
+    //{
+    //    this.Date = _date;
+    //    this.High = _high;
+    //    this.Open = _open;
+    //    this.Low = _low;
+    //    this.Close = _close;
+    //    this.UnadjustedVolume = _unadjustedVolume;
+    //    this.Change = _change;
+    //    this.ChangePercent = _changePercent;
+    //    this.Vwap = _vwap;
+    //    this.Label = _label;
+    //    this.ChangeOverTime = _changeOverTime;
 
-    }
+    //}
 
 
 
-    private string _date;
-    private double? _high;
-    private double? _open;
-    private double? _low;
-    private double? _close;
-    private int? _volume;
-    private int? _unadjustedVolume;
-    private double? _change;
-    private double? _changePercent;
-    private double? _vwap;
-    private string _label;
-    private double? _changeOverTime;
+    //private string _date;
+    //private double? _high;
+    //private double? _open;
+    //private double? _low;
+    //private double? _close;
+    //private int? _volume;
+    //private int? _unadjustedVolume;
+    //private double? _change;
+    //private double? _changePercent;
+    //private double? _vwap;
+    //private string _label;
+    //private double? _changeOverTime;
 
-    public string Date
-    {
-        get { return _date; }
-        set
-        {
-            _date = value;
+    //public string Date
+    //{
+    //    get { return _date; }
+    //    set
+    //    {
+    //        _date = value;
 
-        }
-    }
-    public double? Open
-    {
-        get { return _open; }
-        set
-        {
-            _open = value;
+    //    }
+    //}
+    //public double? Open
+    //{
+    //    get { return _open; }
+    //    set
+    //    {
+    //        _open = value;
 
-        }
-    }
+    //    }
+    //}
 
-    public double? High
-    {
-        get { return _high; }
-        set
-        {
-            _high = value;
+    //public double? High
+    //{
+    //    get { return _high; }
+    //    set
+    //    {
+    //        _high = value;
 
-        }
-    }
+    //    }
+    //}
 
-    public double? Low
-    {
-        get { return _low; }
-        set
-        {
-            _low = value;
+    //public double? Low
+    //{
+    //    get { return _low; }
+    //    set
+    //    {
+    //        _low = value;
 
-        }
-    }
-    public double? Close
-    {
-        get { return _close; }
-        set
-        {
-            _close = value;
+    //    }
+    //}
+    //public double? Close
+    //{
+    //    get { return _close; }
+    //    set
+    //    {
+    //        _close = value;
 
-        }
-    }
-    public int? Volume
-    {
-        get { return _volume; }
-        set
-        {
-            _volume = value;
+    //    }
+    //}
+    //public int? Volume
+    //{
+    //    get { return _volume; }
+    //    set
+    //    {
+    //        _volume = value;
 
-        }
-    }
-    public int? UnadjustedVolume
-    {
-        get { return _unadjustedVolume; }
-        set
-        {
-            _unadjustedVolume = value;
+    //    }
+    //}
+    //public int? UnadjustedVolume
+    //{
+    //    get { return _unadjustedVolume; }
+    //    set
+    //    {
+    //        _unadjustedVolume = value;
 
-        }
-    }
-    public double? Change
-    {
-        get { return _change; }
-        set
-        {
-            _change = value;
+    //    }
+    //}
+    //public double? Change
+    //{
+    //    get { return _change; }
+    //    set
+    //    {
+    //        _change = value;
 
-        }
-    }
-    public double? ChangePercent
-    {
-        get { return _changePercent; }
-        set
-        {
-            _changePercent = value;
+    //    }
+    //}
+    //public double? ChangePercent
+    //{
+    //    get { return _changePercent; }
+    //    set
+    //    {
+    //        _changePercent = value;
 
-        }
-    }
-    public double? Vwap
-    {
-        get { return _vwap; }
-        set
-        {
-            _vwap = value;
+    //    }
+    //}
+    //public double? Vwap
+    //{
+    //    get { return _vwap; }
+    //    set
+    //    {
+    //        _vwap = value;
 
-        }
-    }
-    public string Label
-    {
-        get { return _label; }
-        set
-        {
-            _label = value;
+    //    }
+    //}
+    //public string Label
+    //{
+    //    get { return _label; }
+    //    set
+    //    {
+    //        _label = value;
 
-        }
-    }
-    public double? ChangeOverTime
-    {
-        get { return _changeOverTime; }
-        set
-        {
-            _changeOverTime = value;
+    //    }
+    //}
+    //public double? ChangeOverTime
+    //{
+    //    get { return _changeOverTime; }
+    //    set
+    //    {
+    //        _changeOverTime = value;
 
-        }
-    }
+    //    }
+    //}
+
+    public string date { get; set; }
+    public double uClose { get; set; }
+    public double uOpen { get; set; }
+    public double uHigh { get; set; }
+    public double uLow { get; set; }
+    public int uVolume { get; set; }
+    public double close { get; set; }
+    public double open { get; set; }
+    public double high { get; set; }
+    public double low { get; set; }
+    public int volume { get; set; }
+    public double change { get; set; }
+    public double changePercent { get; set; }
+    public string label { get; set; }
+    public double changeOverTime { get; set; }
+
+
 }

@@ -29,7 +29,7 @@
     using DevExpress.Utils;
     using DevExpress.Utils.Serializing;
     using DevExpress.Utils.Serializing.Helpers;
-  
+    using DevExpress.Xpf.Core;
 
 
     public partial class BlotterViewVisual : UserControl
@@ -149,14 +149,15 @@
 
              this.DataContext = securityHistoryViewerModel;
              this._vm = securityHistoryViewerModel;
-             GetSecurities();
+            ApplicationThemeHelper.ApplicationThemeName = _vm.Parameters.DefaultTheme;
+            GetSecurities();
          
            
              this.SecurityComboBoxEdit.Text = Symbol;
 
              DevExpress.Xpf.Grid.GridControl.AllowInfiniteGridSize = true;
            
-             SerializeHelperBase f;
+             
 
              AssignXML();
 

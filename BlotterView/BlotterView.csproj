@@ -105,44 +105,49 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v18.2.Core">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Charts.v18.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Charts.v18.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Data.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Data.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Data.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Mvvm.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Mvvm.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Mvvm.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Printing.v18.2.Core">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Printing.v18.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Printing.v18.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Charts.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Charts.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Charts.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Charts.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Controls.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Controls.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Controls.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Controls.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Core.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Core.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Core.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Core.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Grid.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Grid.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Grid.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v18.2.Core">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Grid.v18.2.Core.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Grid.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Grid.v18.1.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.LayoutControl.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.LayoutControl.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.LayoutControl.v18.1.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Printing.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Printing.v18.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Themes.Office2016White.v18.2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Xpf.Themes.Office2016WhiteSE.v18.2">
-      <HintPath>..\..\..\..\Workspace\LinedataWorkstation\DevExpress.Xpf.Themes.Office2016WhiteSE.v18.2.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Printing.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL_753\DevExpress.Xpf.Printing.v18.1.dll</HintPath>
     </Reference>
     <Reference Include="Linedata.Client.Widget.BaseControls, Version=2.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -223,10 +228,11 @@
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
+      <HintPath>..\..\DLL_753\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\..\DLL_753\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
