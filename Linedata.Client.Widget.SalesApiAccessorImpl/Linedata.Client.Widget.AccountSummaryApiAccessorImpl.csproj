@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C8C1538-4D73-4E38-9B13-CD2F105E149C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Linedata.Client.Widget.AccountSummaryApiAccessorImpl</RootNamespace>
+    <AssemblyName>Linedata.Client.Widget.AccountSummaryApiAccessorImpl</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Client.Widget.AccountSummary\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64' AND  Exists('C:\WorkstationRefDir\$(Configuration)_x64\bin')">
+    <OutputPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Client.Widget.AccountSummary\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64' AND  !Exists('C:\WorkstationRefDir\$(Configuration)_x64\bin')">
+    <OutputPath>..\..\..\$(Configuration)_x64\bin\widgets\Linedata.Client.Widget.AccountSummary\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Linedata.Client.Widget.Common">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Client.Widget.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Linedata.Shared.Api">
+      <HintPath>c:\WorkstationRefDir\3rdPartyLib\Linedata\Linedata.Shared.Api\75.3.0.0\Linedata.Shared.Api.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Linedata.Client.Workstation.LongviewAdapterClient">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Client.Workstation.LongviewAdapterClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Linedata.Shared.Workstation.Api.PortfolioManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Shared.Workstation.Api.PortfolioManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Linedata.Client.Workstation.Api.PortfolioManagement">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\widgets\Linedata.Client.Workstation.Api.PortfolioManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Linedata.Client.Workstation.SharedReferences">
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\Linedata.Client.Workstation.SharedReferences.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Linedata.Shared.Workstation.Api">
+      <HintPath>c:\WorkstationRefDir\$(Configuration)_x64\bin\Linedata.Shared.Workstation.Api.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>c:\WorkstationRefDir\3rdPartyLib\log4net\log4net\2.0.8.0\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountSummaryNotifier.cs" />
+    <Compile Include="AccountSummaryApiAccessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Linedata.Client.Widget.AccountSummaryApiAccessor\Linedata.Client.Widget.SalesApiAccessor.csproj">
+      <Project>{AC5FCFF6-77A5-4509-934C-1D9D76CE754E}</Project>
+      <Name>Linedata.Client.Widget.SalesApiAccessor</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
